@@ -70,6 +70,46 @@ public class TaskManager {
         System.out.println("Task with id " + id + " has been successfully deleted!");
     }
 
+    public Task markInProgress(int id) {
+        Task task = findTask(id);
+        if (task != null) {
+            task.setStatus(Task.TaskStatus.IN_PROGRESS);
+            saveTasks();
+        }
+        return task;
+    }
+
+    public Task markDone(int id) {
+        Task task = findTask(id);
+        if (task != null) {
+            task.setStatus(Task.TaskStatus.DONE);
+            saveTasks();
+        }
+        return task;
+    }
+
+    public List<Task> listAllTasks() {
+        return new ArrayList<>(tasks);
+    }
+
+    public List<Task> listDoneTasks() {
+        return listTasksByStatus(Task.TaskStatus.DONE);
+    }
+
+    public List<Task> listInProgressTasks() {
+        return listTasksByStatus(Task.TaskStatus.IN_PROGRESS);
+    }
+
+    public List<Task> listToDoTask() {
+        return listTasksByStatus(Task.TaskStatus.TODO);
+    }
+
+    private List<Task> listTasksByStatus(Task.TaskStatus status) {
+        return tasks.stream()
+                .filter(task -> task.getStatus() == status)
+                .collect(Collectors.toList());
+    }
+
     private Task findTask(int id) {
         return tasks.stream()
                 .filter(task -> task.getId() == id)
