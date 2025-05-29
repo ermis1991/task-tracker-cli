@@ -38,3 +38,9 @@ All tasks are stored in a ```tasks.json``` file in the current directory. It is 
 ## External Libraries
 
 No external libraries or frameworks are used. Everything is built using the Java standard library.
+
+## Author
+
+**Kadir Eren Tüter**  
+Backend Developer | Java Enthusiast  
+[LinkedIn](https://www.linkedin.com/in/kadir-eren-t%C3%BCter-84a3451a4/) • [GitHub](https://github.com/ermis1991)
