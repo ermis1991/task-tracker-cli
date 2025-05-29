@@ -1,5 +1,6 @@
 package com.ermis1991.tasktracker;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class TaskTrackerCLI {
@@ -22,7 +23,7 @@ public class TaskTrackerCLI {
                         System.out.println("Error: Description is required for adding a task");
                         return;
                     }
-                    String description = args[1];
+                    String description = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
                     Task added = taskManager.addTask(description);
                     System.out.println("Task added: " + added);
                     break;
@@ -32,7 +33,7 @@ public class TaskTrackerCLI {
                         return;
                     }
                     int updateId = Integer.parseInt(args[1]);
-                    String newDesc = args[2];
+                    String newDesc = String.join(" ", Arrays.copyOfRange(args, 2, args.length));
                     Task updated = taskManager.updateTask(updateId, newDesc);
                     if (updated != null) {
                         System.out.println("Updated: " + updated);
